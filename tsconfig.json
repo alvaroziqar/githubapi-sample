@@ -12,9 +12,11 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"],
+    "path": {
+      "@shared/*": ["src/app/modules/shared/*"],
+      "@core/*": ["src/app/modules/core/*"],
+      "@env/*": ["src/environments/*"]
+    }
   }
 }
