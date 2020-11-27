@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged, pluck } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 import { State } from './state';
 
 const DEFAULT_STATE: State = {
@@ -12,24 +12,29 @@ const DEFAULT_STATE: State = {
 };
 
 export class Store {
-  private storeSub = new BehaviorSubject<State>(DEFAULT_STATE);
-  private store = this.storeSub.asObservable().pipe(distinctUntilChanged());
+  private stateSubject = new BehaviorSubject<State>(DEFAULT_STATE);
+  private store = this.stateSubject.asObservable();
 
   get value(): State {
-    return this.storeSub.getValue();
+    return this.stateSubject.getValue();
   }
 
   select<T>(key: string): Observable<T> {
-    return this.store.pipe(pluck(key));
+    return this.store.pipe(
+      map((state: State) => {
+        return state[key];
+      }),
+      distinctUntilChanged()
+    );
   }
 
   reset(): void {
-    this.storeSub.next(DEFAULT_STATE);
+    this.stateSubject.next(DEFAULT_STATE);
   }
 
   // Set only one key of store
   set(key: string, payload: any): void {
-    this.storeSub.next({
+    this.stateSubject.next({
       ...this.value,
       [key]: payload
     });
@@ -37,7 +42,7 @@ export class Store {
 
   // set
   setMultiple(state: Partial<State>): void {
-    this.storeSub.next({
+    this.stateSubject.next({
       ...this.value,
       ...state
     });
