@@ -1,0 +1,9 @@
+<div class="repo-item">
+  <h2 class="repo-item__title">{{ repo?.full_name }}</h2>
+  <div class="repo_item__labels">
+    <div class="label label-info">
+      <mat-icon>error_outline</mat-icon>Issues
+      <strong>{{ repo?.open_issues | shortNumber }}</strong>
+    </div>
+  </div>
+</div>

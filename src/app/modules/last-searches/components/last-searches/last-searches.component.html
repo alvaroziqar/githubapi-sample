@@ -1,0 +1,17 @@
+<div
+  *ngIf="lastSearches$ | async as lastSearches"
+  id="lastSearchesPanel"
+  class="last-searches"
+>
+  <h3>Últimas búsquedas</h3>
+  <div class="last-searches__result">
+    <div
+      *ngFor="let item of lastSearches"
+      (click)="onClickItem(item)"
+      class="last-searches__item"
+    >
+      <mat-icon>replay</mat-icon>
+      {{ item }}
+    </div>
+  </div>
+</div>

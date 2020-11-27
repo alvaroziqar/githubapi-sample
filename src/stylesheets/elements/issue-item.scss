@@ -1,0 +1,29 @@
+.issue-item {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 1px solid $grey;
+  margin-bottom: 1rem;
+  border-radius: 0.42rem;
+}
+
+.issue-item__state {
+  margin-right: 12px;
+}
+
+.issue-item__info {
+  flex: 1 1 auto;
+  .info__title {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .info__meta {
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+}
+
+.issue-item__icons {
+}

@@ -1,9 +1,19 @@
+* {
+  box-sizing: border-box;
+}
 body {
-  background-color: #f3f6f9;
+  background-color: $grey;
 }
 .container {
-  width: 1024px;
-  background-color: #fff;
+  padding: 1rem 0;
   height: 100%;
   margin: 0 auto;
+  max-width: 1024px;
+}
+
+.content {
+  padding: 2rem;
+  width: 100%;
+  background-color: $white;
+  border-radius: 0.42rem;
 }

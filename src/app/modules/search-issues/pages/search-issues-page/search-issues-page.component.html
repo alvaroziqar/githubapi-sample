@@ -1,0 +1,66 @@
+<form
+  [formGroup]="form"
+  novalidate
+  (submit)="submit()"
+  #repoForm="ngForm"
+  class="search-form-container"
+>
+  <mat-form-field class="full-width">
+    <mat-label>Url repositorio</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="repo"
+      lastSearches="issueSearch"
+      autocomplete="off"
+      placeholder="Ejem. https://github.com/angular/angular"
+      #searchInput="lastSearches"
+    />
+    <mat-error
+      *ngIf="
+        form.get('repo').hasError('invalidGithubUrl') && repoForm.submitted
+      "
+    >
+      Url del repositorio no valida
+    </mat-error>
+    <mat-error
+      *ngIf="form.get('repo').hasError('required') && repoForm.submitted"
+    >
+      La url del repositorio es <strong>requerida</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="form-buttons-container">
+    <button mat-raised-button color="primary">Obtener issues</button>
+  </div>
+</form>
+
+<div
+  *ngIf="errorMessage$ | async as message"
+  class="message bg-warning text-white"
+>
+  {{ message }}
+</div>
+
+<ng-container *ngIf="repository$ | async as repo">
+  <iron-repo-item [repo]="repo"></iron-repo-item>
+</ng-container>
+
+<div *ngIf="isLoading$ | async" class="loading">
+  loading...
+</div>
+
+<div *ngIf="issues$ | async as issues" class="search-result-container">
+  <div *ngIf="!issues.length">
+    No hay issues para el repositorio seleccionado
+  </div>
+  <iron-issue-item
+    *ngFor="let issue of issues"
+    [issue]="issue"
+  ></iron-issue-item>
+</div>
+
+<iron-github-paginator
+  [links]="issuesPaginationLink$ | async"
+  (changePage)="onChangePage($event)"
+></iron-github-paginator>

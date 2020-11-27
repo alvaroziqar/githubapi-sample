@@ -1,0 +1,20 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  .header-logo {
+    color: $dark-grey;
+    font-weight: 600;
+    font-size: 1.6rem;
+    flex: 1 0 auto;
+
+    span {
+      color: red;
+    }
+  }
+  .header-actions {
+  }
+}

@@ -1,0 +1,42 @@
+.label {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 8px;
+  color: #7e8299;
+  background-color: #d1d3e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .mat-icon {
+    font-size: 16px;
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    margin-right: 8px;
+  }
+
+  strong {
+    padding-left: 8px;
+  }
+
+  &.label-error {
+    color: $white;
+    background-color: $error;
+  }
+
+  &.label-success {
+    color: $white;
+    background-color: $success;
+  }
+
+  &.label-info {
+    color: $white;
+    background-color: $info;
+  }
+
+  &.label-warning {
+    color: $white;
+    background-color: $warning;
+  }
+}

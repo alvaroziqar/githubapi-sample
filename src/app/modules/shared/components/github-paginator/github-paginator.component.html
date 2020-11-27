@@ -1,0 +1,10 @@
+<div *ngIf="showPaginator" class="github-paginator">
+  <div class="info">Mostrando página {{ currentPage }} de {{ totalPages }}</div>
+  <button
+    *ngFor="let option of options"
+    [disabled]="!isActive(option.id)"
+    (click)="onClick(option.id)"
+  >
+    {{ option.icon }}
+  </button>
+</div>
