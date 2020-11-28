@@ -10,6 +10,11 @@ export class IssueItemComponent {
   @Input() issue: Issue;
 
   getDate(): Date {
-    return new Date(this.issue.updated_at);
+    return (
+      (this.issue &&
+        this.issue.updated_at &&
+        new Date(this.issue.updated_at)) ||
+      null
+    );
   }
 }

@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 const humanKeys = {
   first: 'rel=first',
@@ -10,7 +16,8 @@ const humanKeys = {
 @Component({
   selector: 'iron-github-paginator',
   templateUrl: 'github-paginator.component.html',
-  styleUrls: ['./github-paginator.component.scss']
+  styleUrls: ['./github-paginator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GithubPaginatorComponent {
   @Input()

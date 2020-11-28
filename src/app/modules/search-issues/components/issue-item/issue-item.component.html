@@ -1,5 +1,5 @@
 <div class="issue-item">
-  <div [ngSwitch]="issue.state" class="issue-item__state">
+  <div [ngSwitch]="issue?.state" class="issue-item__state">
     <mat-icon
       *ngSwitchCase="'close'"
       matTooltip="Issue cerrada"
@@ -19,18 +19,18 @@
   <div class="issue-item__info">
     <div class="info__title">{{ issue?.title }}</div>
     <div class="info__meta">
-      <span class="info_meta__number"> #{{ issue.number }} </span>
+      <span class="info_meta__number"> #{{ issue?.number }} </span>
       <span class="info_meta__dater">
         hace {{ getDate() | dfnsFormatDistanceToNow }}
       </span>
       <span class="info_meta__user">
-        por <span class="text-info">{{ issue.user?.login }}</span>
+        por <span class="text-info">{{ issue?.user?.login }}</span>
       </span>
     </div>
   </div>
   <div *ngIf="issue?.comments > 0" class="issue-item__icons">
     <div class="label label-info">
-      <mat-icon>chat-bubble</mat-icon>{{ issue.comments }}
+      <mat-icon>chat-bubble</mat-icon>{{ issue?.comments }}
     </div>
   </div>
 </div>
