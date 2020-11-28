@@ -8,10 +8,14 @@ Demo de la aplicación [https://githubapi-sample.vercel.app](https://githubapi-s
 
 ## Installation
 
-This library has been tested with [date-fns](https://date-fns.org/) v2.0.1.
-
 ```
 git clone git@github.com:alvaroziqar/githubapi-sample.git
 npm install
 npm run serve
+```
+
+## Test
+
+```
+npm run test
 ```
